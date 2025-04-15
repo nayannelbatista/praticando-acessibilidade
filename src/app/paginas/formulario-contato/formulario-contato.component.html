@@ -1,5 +1,5 @@
 <!-- versão piorada -->
-<!-- <app-container>
+<app-container>
   <app-cabecalho
     [bannerSrc]="'/assets/adicionar-contato.png'">
   </app-cabecalho>
@@ -7,27 +7,51 @@
   <div [formGroup]="contatoForm" (ngSubmit)="salvarContato()">
     <div class="imagem-contato">
       <i class="material-icons">add</i>
-      <label>Adicione a imagem do contato</label>
-      <input type="file" accept="image/*" required (change)="aoSelecionarArquivo($event)">
+      <label>Adicione o arquivo</label>
+      <input type="file" accept="image/*" (change)="aoSelecionarArquivo($event)">
     </div>
+
+    @if(contatoForm.get('avatar')?.value !== '') {
+      <img
+        [src]="contatoForm.get('avatar')?.value"
+        class="preview-avatar"
+      >
+    }
 
     <input
       type="text"
+      id="nome"
       placeholder="Digite o nome do contato"
       formControlName="nome"
     />
+    <app-mensagem-erro
+      [control]="obterControle('nome')"
+      id="nome">
+    </app-mensagem-erro>
 
     <input
       type="text"
+      id="telefone"
       placeholder="Digite o telefone do contato"
       formControlName="telefone"
     />
+    <app-mensagem-erro
+      [control]="obterControle('telefone')"
+      id="telefone">
+    </app-mensagem-erro>
 
     <input
       type="email"
+      id="email"
       placeholder="Digite o e-mail do contato"
       formControlName="email"
     />
+    <app-mensagem-erro
+    [control]="obterControle('email')"
+    id="email">
+  </app-mensagem-erro>
+
+  <app-separador></app-separador>
 
     <input
       type="date"
@@ -36,7 +60,7 @@
     />
 
     <div class="input-container">
-      <span class="span-http">http://</span>
+      <span class="span-http" aria-hidden="false">http://</span>
       <input
         type="url"
         id="redes"
@@ -67,17 +91,17 @@
       </button>
     </section>
   </div>
-</app-container> -->
+</app-container>
 
 
-<!-- versão acessível -->
-<app-container>
+<!-- versão melhorada -->
+<!-- <app-container>
   <app-cabecalho
     [bannerSrc]="'/assets/adicionar-contato.png'"
     [titulo]="'Adicionar contato'">
   </app-cabecalho>
 
-  <form [formGroup]="contatoForm" (ngSubmit)="salvarContato()" aria-labelledby="form-title">
+  <form [formGroup]="contatoForm" (ngSubmit)="salvarContato()">
 
     <fieldset>
       <legend>Imagem do contato</legend>
@@ -206,5 +230,5 @@
       </button>
     </section>
   </form>
-</app-container>
+</app-container> -->
 

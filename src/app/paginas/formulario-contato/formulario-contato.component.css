@@ -48,6 +48,7 @@ textarea::placeholder {
   line-height: 23px;
   letter-spacing: 0;
   text-align: left;
+  color: #b9cbe5;
 }
 
 input:focus {
